@@ -29,8 +29,8 @@ type privateCommand struct {
 type spliceInsert struct {
 	Name                       string
 	CommandType                uint8
-	TimeSpecifiedFlag          bool   `json:",omitempty"`
-	PTS                        uint32 `json:",omitempty"`
+	TimeSpecifiedFlag          bool `json:",omitempty"`
+	PTS                        int  `json:",omitempty"`
 	SpliceEventID              uint32
 	SpliceEventCancelIndicator bool
 	OutOfNetworkIndicator      bool
@@ -49,8 +49,8 @@ type spliceInsert struct {
 type timeSignal struct {
 	Name              string
 	CommandType       uint8
-	TimeSpecifiedFlag bool   `json:",omitempty"`
-	PTS               uint32 `json:",omitempty"`
+	TimeSpecifiedFlag bool `json:",omitempty"`
+	PTS               int  `json:",omitempty"`
 }
 
 /*
@@ -83,7 +83,7 @@ type Command struct {
 	AvailNum                   uint8   // .
 	AvailExpected              uint8   // .
 	TimeSpecifiedFlag          bool    // SpliceInsert, TimeSignal
-	PTS                        uint32  // SpliceInsert, TimeSignal
+	PTS                        int     // SpliceInsert, TimeSignal
 }
 
 // only show timeSignal values in JSON, used by cmd.MarshalJSON()
@@ -279,7 +279,7 @@ func (cmd *Command) decodeSpliceTime(bd *bitDecoder) {
 	cmd.TimeSpecifiedFlag = bd.asFlag()
 	if cmd.TimeSpecifiedFlag {
 		bd.goForward(6)
-		cmd.PTS = bd.uInt32(33)
+		cmd.PTS = int(bd.uInt64(33))
 	} else {
 		bd.goForward(7)
 	}
