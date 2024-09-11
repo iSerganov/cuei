@@ -16,7 +16,7 @@ type InfoSection struct {
 	ProtocolVersion        uint8
 	EncryptedPacket        bool
 	EncryptionAlgorithm    uint8
-	PtsAdjustment          float64
+	PtsAdjustment          int
 	CwIndex                string
 	Tier                   string
 	CommandLength          uint16
@@ -53,7 +53,7 @@ func (infosec *InfoSection) decode(bd *bitDecoder) bool {
 	}
 	infosec.EncryptedPacket = bd.asFlag()
 	infosec.EncryptionAlgorithm = bd.uInt8(6)
-	infosec.PtsAdjustment = bd.as90k(33)
+	infosec.PtsAdjustment = int(bd.uInt64(33))
 	infosec.CwIndex = bd.asHex(8)
 	infosec.Tier = bd.asHex(12)
 	infosec.CommandLength = bd.uInt16(12)

@@ -121,9 +121,9 @@ func (cue *Cue) Show() {
 	fmt.Println(mkJson(&cue))
 }
 
-// AdjustPts adds seconds to cue.InfoSection.PtsAdjustment
-func (cue *Cue) AdjustPts(seconds float64) {
-	cue.InfoSection.PtsAdjustment += seconds
+// AdjustPts adds pts to cue.InfoSection.PtsAdjustment
+func (cue *Cue) AdjustPts(pts int) {
+	cue.InfoSection.PtsAdjustment += pts
 	cue.Encode()
 }
 

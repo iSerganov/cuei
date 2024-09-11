@@ -7,10 +7,10 @@ import (
 	"github.com/iSerganov/cuei"
 )
 
-//func BenchmarkStream(b *testing.B) {
-//	stream := cuei.NewStream()
-//	stream.Decode("/home/a/v2.ts")
-//}
+func BenchmarkStream(b *testing.B) {
+	stream := cuei.NewStream()
+	stream.Decode("/home/a/v2.ts")
+}
 
 func ExampleJson2Cue() {
 
@@ -55,8 +55,8 @@ func ExampleJson2Cue() {
 	cue.Show()
 }
 
-func ExampleNewCue() {
-	data := "/DCtAAAAAAAAAP/wBQb+Tq9DwQCXAixDVUVJCUvhcH+fAR1QQ1IxXzEyMTYyMTE0MDBXQUJDUkFDSEFFTFJBWSEBAQIsQ1VFSQlL4W9/nwEdUENSMV8xMjE2MjExNDAwV0FCQ1JBQ0hBRUxSQVkRAQECGUNVRUkJTBwVf58BClRLUlIxNjA4NEEQAQECHkNVRUkJTBwWf98AA3clYAEKVEtSUjE2MDg0QSABAdHBXYA="
+func TestExampleNewCue(t *testing.T) {
+	data := "/DBAAAAAAyiYAAAABQb/+MRY2AAqAihDVUVJ/////3//AAFy0mgBFG1zbmJjX1NIMDUyNzkyNjcwMDAwIgUEMRDM5A=="
 	cue := cuei.NewCue()
 	cue.Command = &cuei.Command{}
 	cue.Decode(data)
@@ -116,7 +116,7 @@ func ExampleCue_AdjustPts() {
 	cue.InfoSection.Show()
 	fmt.Println()
 	// Change cue.InfoSection.PtsAdjustment and re-encode cue to bytes
-	cue.AdjustPts(33.333)
+	cue.AdjustPts(33333)
 	fmt.Println("After calling Cue.AdjustPts")
 	fmt.Println(cue.Encode2B64())
 	cue.InfoSection.Show()
@@ -142,7 +142,7 @@ func Test(t *testing.T) {
 		ExampleCue_AdjustPts()
 	})
 	t.Run("NewCue", func(t *testing.T) {
-		ExampleNewCue()
+		TestExampleNewCue(t)
 	})
 	t.Run("Cue_Encode", func(t *testing.T) {
 		ExampleCue_Encode()
