@@ -29,8 +29,8 @@ type privateCommand struct {
 type spliceInsert struct {
 	Name                       string
 	CommandType                uint8
-	TimeSpecifiedFlag          bool    `json:",omitempty"`
-	PTS                        float64 `json:",omitempty"`
+	TimeSpecifiedFlag          bool   `json:",omitempty"`
+	PTS                        uint32 `json:",omitempty"`
 	SpliceEventID              uint32
 	SpliceEventCancelIndicator bool
 	OutOfNetworkIndicator      bool
@@ -49,8 +49,8 @@ type spliceInsert struct {
 type timeSignal struct {
 	Name              string
 	CommandType       uint8
-	TimeSpecifiedFlag bool    `json:",omitempty"`
-	PTS               float64 `json:",omitempty"`
+	TimeSpecifiedFlag bool   `json:",omitempty"`
+	PTS               uint32 `json:",omitempty"`
 }
 
 /*
@@ -66,24 +66,24 @@ Command
 	    0xff: Private Command,
 */
 type Command struct {
-	Name                       string     	// All
-	CommandType                uint8	// .
-	PrivateBytes               []byte	// PrivateCommand
-	Identifier                 uint32	// .
-	SpliceEventID              uint32	// SpliceInsert
-	SpliceEventCancelIndicator bool		// .
-	EventIDComplianceFlag      bool		// .
-	OutOfNetworkIndicator      bool		// .
-	ProgramSpliceFlag          bool		// .
-	DurationFlag               bool		// .
-	BreakAutoReturn            bool		// .
-	BreakDuration              float64	// .
-	SpliceImmediateFlag        bool		// .
-	UniqueProgramID            uint16	// .
-	AvailNum                   uint8	// .
-	AvailExpected              uint8	// .
-	TimeSpecifiedFlag          bool 	// SpliceInsert, TimeSignal
-	PTS                        float64	// SpliceInsert, TimeSignal
+	Name                       string  // All
+	CommandType                uint8   // .
+	PrivateBytes               []byte  // PrivateCommand
+	Identifier                 uint32  // .
+	SpliceEventID              uint32  // SpliceInsert
+	SpliceEventCancelIndicator bool    // .
+	EventIDComplianceFlag      bool    // .
+	OutOfNetworkIndicator      bool    // .
+	ProgramSpliceFlag          bool    // .
+	DurationFlag               bool    // .
+	BreakAutoReturn            bool    // .
+	BreakDuration              float64 // .
+	SpliceImmediateFlag        bool    // .
+	UniqueProgramID            uint16  // .
+	AvailNum                   uint8   // .
+	AvailExpected              uint8   // .
+	TimeSpecifiedFlag          bool    // SpliceInsert, TimeSignal
+	PTS                        uint32  // SpliceInsert, TimeSignal
 }
 
 // only show timeSignal values in JSON, used by cmd.MarshalJSON()
@@ -279,7 +279,7 @@ func (cmd *Command) decodeSpliceTime(bd *bitDecoder) {
 	cmd.TimeSpecifiedFlag = bd.asFlag()
 	if cmd.TimeSpecifiedFlag {
 		bd.goForward(6)
-		cmd.PTS = bd.as90k(33)
+		cmd.PTS = bd.uInt32(33)
 	} else {
 		bd.goForward(7)
 	}

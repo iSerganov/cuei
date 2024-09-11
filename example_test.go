@@ -2,8 +2,9 @@ package cuei_test
 
 import (
 	"fmt"
-	"github.com/futzu/cuei"
 	"testing"
+
+	"github.com/futzu/cuei"
 )
 
 //func BenchmarkStream(b *testing.B) {
@@ -37,7 +38,7 @@ func ExampleJson2Cue() {
         "OutOfNetworkIndicator": true,
         "ProgramSpliceFlag": true,
         "TimeSpecifiedFlag": true,
-        "PTS": 23683.480033
+        "PTS": 987654321
     },
     "DescriptorLoopLength": 10,
     "Descriptors": [
@@ -51,7 +52,7 @@ func ExampleJson2Cue() {
 }
 `
 	cue := cuei.Json2Cue(js)
-    cue.Show()
+	cue.Show()
 }
 
 func ExampleNewCue() {
@@ -70,7 +71,7 @@ func ExampleCue_Decode() {
 	fmt.Println("Cue.Decode() parses data and populate the fields in the Cue.")
 	cue.Show()
 	fmt.Println("\n\nCue values can be accessed via dot notiation,")
-	cue.Command.PTS = 987.654321
+	cue.Command.PTS = 987654321
 	fmt.Printf("cue.Command.PTS = %v\n", cue.Command.PTS)
 	cue.Show()
 
