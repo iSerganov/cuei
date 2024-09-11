@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/futzu/cuei"
+	"github.com/iSerganov/cuei"
 )
 
 //func BenchmarkStream(b *testing.B) {

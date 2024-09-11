@@ -1,5 +1,5 @@
 
- [Install](#install-cuei)  | [Go Docs](https://pkg.go.dev/github.com/futzu/cuei)  | [Examples](https://pkg.go.dev/github.com/futzu/cuei) | [cuei wins the SCTE-35 Parser Shoot Out](https://github.com/futzu/SCTE35-threefive/blob/master/speedtest.md)
+ [Install](#install-cuei)  | [Go Docs](https://pkg.go.dev/github.com/iSerganov/cuei)  | [Examples](https://pkg.go.dev/github.com/iSerganov/cuei) | [cuei wins the SCTE-35 Parser Shoot Out](https://github.com/futzu/SCTE35-threefive/blob/master/speedtest.md)
 
 
 
@@ -26,7 +26,7 @@ package main
 
 import (                              
         "os"                            
-        "github.com/futzu/cuei"       
+        "github.com/iSerganov/cuei"       
 )                                    
 
 func main(){                         
@@ -46,7 +46,7 @@ func main(){
 * [Install](#install-cuei)  
 
 
-* [Examples](https://pkg.go.dev/github.com/futzu/cuei)
+* [Examples](https://pkg.go.dev/github.com/iSerganov/cuei)
 	* cuei.Stream 
 		* [Parse SCTE-35 from MPEGTS](#quick-demo)
    		* [Custom Cue Handling for MPEGTS Streams](#custom-cue-handling-for-mpegts-streams)
@@ -68,7 +68,7 @@ func main(){
 ### `Install cuei` 
 
 ```go
-go get github.com/futzu/cuei@latest
+go get github.com/iSerganov/cuei@latest
 
 ```
 
@@ -84,7 +84,7 @@ package main
 import (
         "os"
         "fmt"
-        "github.com/futzu/cuei"
+        "github.com/iSerganov/cuei"
 )
 
 func main(){
@@ -174,7 +174,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/futzu/cuei"
+	"github.com/iSerganov/cuei"
 )
 
 func main(){
@@ -193,7 +193,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/futzu/cuei"
+	"github.com/iSerganov/cuei"
 )
 
 type Cue2 struct {
@@ -218,7 +218,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/futzu/cuei"
+	"github.com/iSerganov/cuei"
 )
 
 type Cue2 struct {
@@ -253,7 +253,7 @@ package main
 import (
 	"os"
 	"fmt"
-	"github.com/futzu/cuei"
+	"github.com/iSerganov/cuei"
 )
 
 func main() {
@@ -276,7 +276,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/futzu/cuei"
+	"github.com/iSerganov/cuei"
 )
 
 func main() {
@@ -354,7 +354,7 @@ package main
 
 import (
         "fmt"
-        "github.com/futzu/cuei"
+        "github.com/iSerganov/cuei"
         "os"
 )
 
@@ -420,7 +420,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/futzu/cuei"
+	"github.com/iSerganov/cuei"
 	"os"
         "net"
 )

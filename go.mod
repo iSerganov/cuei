@@ -1,3 +1,3 @@
-module github.com/futzu/cuei
+module github.com/iSerganov/cuei
 
 go 1.19
